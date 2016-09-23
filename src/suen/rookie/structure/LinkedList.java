@@ -3,13 +3,13 @@ package suen.rookie.structure;
 /**
  * Created by bjhksun on 2016/9/22.
  */
-public class LinkedList {
+public class LinkedList<T> {
 
-    public Node<Integer> current;//当前链表的尾部，加入新对象的时候使用。
-    public Node<Integer> head;//链表的头，一般单项链表，head的永远指向链表首部，方便从前到后便利链表。
-    public Node<Integer> t;//在便利链表的时候，替代head使用
+    public Node<T> current;//当前链表的尾部，加入新对象的时候使用。
+    public Node<T> head;//链表的头，一般单项链表，head的永远指向链表首部，方便从前到后便利链表。
+    public Node<T> t;//在便利链表的时候，替代head使用
 
-    public void addNode(Node<Integer> node){
+    public void addNode(Node<T> node){
         if (head==null){
             head = node;
             current = node;
