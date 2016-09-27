@@ -6,14 +6,16 @@ package suen.rookie.algorithm;
  */
 public class Search {
 
-    public static int[] book = new int[5];
+    public static int[] book = new int[100];
     public static int[] t = new int[30];
+    public static int[][] net = {{0,0,0,0,0,0},{0,0,1,1,0,1},{0,1,0,0,1,0},{0,1,0,0,0,0},{0,0,1,0,0,0},{0,1,0,0,0,0}};
+    public static int que[] = new int[10];//访问的顶点序号队列。
 
     public static void main(String[] args){
-        dfs(1);
+        bfs();
     }
 
-    //深度优先搜索
+    //深度优先搜索，全排列
     public static void dfs(int step){
 
         if (step == 4){
@@ -35,12 +37,32 @@ public class Search {
 
     }
 
-    //广度优先搜索，迷宫问题，当然同样可以使用dfs的方法来搜索。
+    //广度优先搜索。主要是采用队列的形式记录，如果需要记录步数，可以在用另外增加一个数组记录。
     public static void bfs(){
 
+        int head=1,tail=1, cur=1, n=5;
+        que[tail] = 1;
+        book[tail] = 1;
+        tail++;
 
+        while (head < tail){
+            cur = que[head];
+            for (int i=1; i<=n; i++){
+                if (net[cur][i]>0 && book[i]==0){
+                    book[i]=1;
+                    que[tail]=i;
+                    tail++;
+                }
+                if (tail>n){
+                    break;
+                }
+            }
+            head++;//这里是一个顶点扩展完之后需要前进一个扩展点的地方。
+        }
 
-
+        for (int i=1; i<=n; i++){
+            System.out.println(que[i]);
+        }
 
     }
 
